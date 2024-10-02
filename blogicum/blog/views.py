@@ -1,7 +1,9 @@
+"""Импортируем модуль http404."""
 from django.http import Http404
 from django.shortcuts import render
 from blog.models import Post, Category
 from django.utils import timezone
+
 
 def index(request):
     """View функция для главной страницы."""
@@ -19,8 +21,11 @@ def post_detail(request, post_id):
         post = Post.objects.get(pk=post_id)
     except Post.DoesNotExist:
         raise Http404(f"Страница {post_id} не найдена")
-    if not post.is_published or not post.category.is_published or post.pub_date >= timezone.now():
+    if (not post.is_published or
+            not post.category.is_published or
+            post.pub_date >= timezone.now()):
         raise Http404(f"Страница {post_id} не найдена")
+
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
