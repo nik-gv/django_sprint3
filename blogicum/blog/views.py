@@ -25,9 +25,9 @@ def post_detail(request, post_id):
         raise Http404(f"Страница {post_id} не найдена")
 
     if (
-        not post.is_published or
-        not post.category.is_published or
-        post.pub_date >= timezone.now()
+        not post.is_published
+        or not post.category.is_published
+        or post.pub_date >= timezone.now()
     ):
         raise Http404(f"Страница {post_id} не найдена")
 
