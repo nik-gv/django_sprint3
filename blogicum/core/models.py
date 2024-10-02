@@ -9,7 +9,7 @@ class PublishedModel(models.Model):
         default=True,
         verbose_name='Опубликовано',
         help_text='Снимите галочку, чтобы скрыть публикацию.'
-        )
+    )
 
     class Meta:
         """Создаем абстрактную модель."""
