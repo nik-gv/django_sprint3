@@ -7,6 +7,7 @@ class PostInline(admin.StackedInline):
     model = Post
     extra = 3
 
+
 class CategoryAdmin(admin.ModelAdmin):
     inlines = (
         PostInline,
@@ -23,6 +24,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'is_published'
     )
 
+
 class LocationAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -32,6 +34,7 @@ class LocationAdmin(admin.ModelAdmin):
     list_editable = (
         'is_published',
     )
+
 
 class PostAdmin(admin.ModelAdmin):
     list_display = (
