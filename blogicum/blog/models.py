@@ -2,6 +2,19 @@
 from django.db import models
 from core.models import PublishedModel
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+
+
+class PublishedPosts(models.Manager):
+    """Менеджер модели."""
+
+    def pub_objects(self):
+        """Фильтр."""
+        return self.filter(
+            pub_date__lte=timezone.now(),
+            is_published=True,
+            category__is_published=True
+        ).order_by('-created_at')
 
 
 class Category(PublishedModel):
@@ -83,6 +96,8 @@ class Post(PublishedModel):
     )
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Добавлено')
+
+    published_posts = PublishedPosts()
 
     class Meta:
         """Meta данные модели."""
