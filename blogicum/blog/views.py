@@ -28,7 +28,7 @@ def category_posts(request, category_slug):
         Category,
         slug=category_slug,
         is_published=True
-        )
+    )
     post_list = Post.objects.pub_objects().filter(category=category)
     context = {
         'category': category,
