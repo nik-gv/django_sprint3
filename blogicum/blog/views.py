@@ -24,8 +24,7 @@ def post_detail(request, post_id):
 
 def category_posts(request, category_slug):
     """View функция для страницы категорий."""
-    category = get_object_or_404(
-        Category,
+    category = get_object_or_404(Category,
         slug=category_slug,
         is_published=True
         )
