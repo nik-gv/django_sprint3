@@ -96,8 +96,7 @@ class Post(PublishedModel):
     )
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Добавлено')
-
-    published_posts = PublishedPosts()
+    objects = PublishedPosts()
 
     class Meta:
         """Meta данные модели."""
